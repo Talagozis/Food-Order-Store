@@ -1,4 +1,4 @@
-interface IENV {
+export interface IENV {
 	mode: Mode;
 	
 	IMAGE_URL: string;
