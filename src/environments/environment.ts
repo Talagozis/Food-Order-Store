@@ -2,10 +2,21 @@
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
-export const environment = {
-  production: false,
-  image_url: ""
-};
+export const ENV: IENV = {
+	mode: 'Development',
+	
+	IMAGE_URL: "",
+
+	API_HEADER_NAME: "",
+	API_HEADER_VALUE: "",
+	API_URL: "",
+
+	RPC_HEADER_NAME: "",
+	RPC_HEADER_VALUE: "",
+	RPC_URL: "",
+
+	GOOGLE_ANALYTICS_TRACKING_ID: "",
+}
 
 /*
  * In development mode, to ignore zone related error stack frames such as
