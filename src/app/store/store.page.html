@@ -1,0 +1,124 @@
+<ion-header>
+	<div class="store-cover" [ngStyle]="getBackgroundStyle(store.cover|imageStore)">
+		<ion-toolbar transparent>
+			<ion-text text-center color="light">
+				<h3>{{store.name}}</h3>
+			</ion-text>
+		</ion-toolbar>
+		<div *ngIf="store">
+			<ion-row>
+				<ion-col size="4">
+					<ion-thumbnail item-start>
+						<img src="{{store.logo|imageStore}}" class="img-responsive store-logo">
+					</ion-thumbnail>
+				</ion-col>
+				<ion-col size="8">
+					<ion-text color="light">
+						<p>
+							<ion-icon name="cash" color="success"></ion-icon>
+							<span style="letter-spacing: -0.2px;">Ελάχιστη παραγγελία:</span> 
+							<strong>{{store.minOrderCost|priceFormat}}</strong>
+						</p>
+					</ion-text>
+					<ion-text color="light">
+						<p>
+							<ion-icon name="clock" color="success"></ion-icon>
+							<span style="letter-spacing: -0.2px;">Ανοιχτό σήμερα:</span>
+							<strong *ngIf="store.OpenHours" style="letter-spacing: -0.2px;">
+								<span>{{store.startTime|date:'HH:mm'}}</span> - <span>{{store.endTime|date:'HH:mm'}}</span>
+							</strong>
+						</p>
+					</ion-text>
+				</ion-col>
+			</ion-row>
+		</div>
+	</div>
+</ion-header>
+
+<ion-content>
+
+	<div *ngIf="store">
+
+		<div padding>
+			<ion-segment [(ngModel)]="storeSegment">
+				<ion-segment-button value="catalog" text-capitalize>Κατάλογος</ion-segment-button>
+				<ion-segment-button value="info" text-capitalize>Πληροφορίες</ion-segment-button>
+				<ion-segment-button value="contact" text-capitalize>Επικοινωνία</ion-segment-button>
+			</ion-segment>
+		</div>
+
+		<div [ngSwitch]="storeSegment">
+
+			<ion-list *ngSwitchCase="'catalog'" class="accordion-list">
+				<ion-list-header *ngFor="let category of categories; let i = index" no-lines no-padding>
+					<ion-button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': category.open, 'section': !category.open}">
+						<ion-icon item-left name="arrow-forward" *ngIf="!category.open"></ion-icon>
+						<ion-icon item-left name="arrow-down" *ngIf="category.open"></ion-icon>
+						{{category.key}}
+					</ion-button>
+					<ion-list *ngIf="category.open">
+						<ion-item *ngFor="let product of category; let k = index" detail-none class="child-item pointer" text-wrap (click)="openModal(product)">
+							<h3 text-capitalize>{{product.title}}</h3>
+							<p text-capitalize>{{ product.description }}</p>
+							<ion-button outline item-end>{{product.price|priceFormat}}</ion-button>
+						</ion-item>
+					</ion-list>
+				</ion-list-header>
+			</ion-list>
+
+			<ion-list *ngSwitchCase="'info'">
+				<ion-item *ngFor="let address of store.Addresses">
+					<ion-label>
+						<ion-row>
+							<ion-col>
+								<ion-icon name="compass" color="secondary"></ion-icon>
+								<span>{{address.line}}</span>
+							</ion-col>
+							<ion-col>
+								<span>{{address.city}}, ΤΚ {{address.zip}}</span>
+							</ion-col>
+						</ion-row>
+					</ion-label>
+				</ion-item>
+				<ion-item *ngFor="let openHour of store.OpenHours">
+					<ion-label>
+						<ion-row>
+							<ion-col>
+								<span>{{openHour.dayOfWeek|dayNameFormat}}</span>
+							</ion-col>
+							<ion-col>
+								<ion-icon name="clock" color="secondary"></ion-icon>
+								<span>{{openHour.startTime|date:'HH:mm'}}</span> - <span>{{openHour.endTime|date:'HH:mm'}}</span>
+							</ion-col>
+						</ion-row>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+
+			<ion-list *ngSwitchCase="'contact'">
+				<ion-item *ngFor="let contact of store.Contacts">
+					<ion-label>
+						<ion-grid>
+							<ion-row align-items-start>
+								<ion-col size="4" align-self-start>
+									<ion-avatar>
+										<img src="{{contact.contactTypePicture|imageContactType}}" class="img-responsive" style="width: 32px; height: 32px">
+									</ion-avatar>
+								</ion-col>
+								<ion-col size="8" align-self-end>
+									<a href="tel:{{contact.value}}" shape="round" color="primary" fill="outline" expand="block">{{contact.value}}</a>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
+	<ion-fab *ngIf="cart && cart.cartItems.length > 0" bottom right>
+		<ion-button ion-fab shape="round" color="primary" fill="outline" size="large" (click)="navigateToCheckoutPage()">
+			{{cart.cartItems.length}}
+			<ion-icon name="cart"></ion-icon>
+		</ion-button>
+	</ion-fab>
+</ion-content>
