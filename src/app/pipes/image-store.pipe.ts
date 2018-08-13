@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { ENV } from '../../environments/environment';
 
 @Pipe({
   name: 'imageStore'
