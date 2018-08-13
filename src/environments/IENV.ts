@@ -14,7 +14,7 @@ interface IENV {
 	GOOGLE_ANALYTICS_TRACKING_ID: string;
 }
 
-declare enum Mode {
+export enum Mode {
 	Development = 1,
 	Production = 2,
 }

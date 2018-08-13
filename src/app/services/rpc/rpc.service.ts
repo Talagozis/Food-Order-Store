@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClientService } from '../http-client/http-client.service';
 import { ENV } from '../../../environments/environment';
-import { RpcResponse } from '../../../models/Request/ResponseRpc';
+import { RpcResponse } from '../../models/Request/ResponseRpc';
 
 @Injectable({providedIn: "root"})
 export class RpcService<T extends RpcResponse> {

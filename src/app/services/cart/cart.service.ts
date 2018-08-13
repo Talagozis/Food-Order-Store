@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-import { CartViewModel, CartItemViewModel, CartItemOfferViewModel } from '../../../models/ViewModels/CartViewModel';
+import { CartViewModel, CartItemViewModel, CartItemOfferViewModel } from '../../models/ViewModels/CartViewModel';
 
 
 @Injectable({providedIn: "root"})

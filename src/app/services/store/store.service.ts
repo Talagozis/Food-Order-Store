@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 
-import { StoreApi } from '../../../models/api/Store';
+import { StoreApi } from '../../models/api/Store';
 import { ApiService } from '../api/api.service';
 
 type SubscriptionDelegate = (value: StoreApi[]) => void;

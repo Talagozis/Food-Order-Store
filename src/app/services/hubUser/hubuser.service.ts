@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { HubUserApi } from '../../../models/api/HubUser';
+import { HubUserApi } from '../../models/api/HubUser';
 import { ApiService } from '../api/api.service';
 
 
