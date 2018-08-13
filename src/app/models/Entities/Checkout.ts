@@ -1,4 +1,4 @@
-import { Cart } from "models/Entities/Cart";
+import { Cart } from "../../models/Entities/Cart";
 
 export interface Checkout extends Cart{
     date: Date;
