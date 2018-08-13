@@ -20,8 +20,8 @@
     text-align: center;
 }
 .speech-bubble-ds {
-    background: color($colors, light, base);
-    border: 1px solid color($colors, secondary, base);
+    background: var(--ion-color-light, #fff);;
+    border: 1px solid var(--ion-color-primary, #fff);;
     -webkit-border-radius: 4px;
             border-radius: 4px;
     -webkit-box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -42,7 +42,7 @@
 }
 .speech-bubble-ds-arrow::before {
     border-left: 23px solid transparent;
-    border-top: 23px solid color($colors, secondary, base);
+    border-top: 23px solid var(--ion-color-primary, #fff);;
     bottom: 2px;
     content: "";
     position: absolute;
@@ -50,7 +50,7 @@
 }
 .speech-bubble-ds-arrow::after {
     border-left: 21px solid transparent;
-    border-top: 21px solid color($colors, light, base);
+    border-top: 21px solid var(--ion-color-light, #fff);;
     bottom: 4px;
     content: "";
     position: absolute;
