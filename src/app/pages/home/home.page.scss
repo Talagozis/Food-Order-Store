@@ -9,6 +9,10 @@
 .pointer {
     cursor: pointer;
 }
+.sticky {
+    position: absolute;
+    bottom: 0px;
+}
 .scroll-content {
     display: table !important;
     width: 100% !important;
