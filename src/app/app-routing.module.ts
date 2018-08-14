@@ -7,10 +7,7 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './pages/home/home.module#HomePageModule'
-  },
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
   { path: 'store', loadChildren: './pages/store/store.module#StorePageModule' }
 ];
 
